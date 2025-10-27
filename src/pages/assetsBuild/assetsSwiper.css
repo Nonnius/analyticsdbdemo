@@ -1,0 +1,55 @@
+@media (min-width: 390px){
+    .mySwiper{
+        margin-left: -14rem!important;
+        margin-top: 1rem;
+        width: 20rem;
+    }
+}
+
+@media (min-Width: 412px){
+    .mySwiper{
+        margin-left: -14rem!important;
+    }
+}
+
+@media (min-width: 712px){
+    .mySwiper{
+        margin-left: 6rem!important;
+    }
+}
+
+@media (min-width: 768px){
+    .mySwiper{       
+        margin-left: 8rem!important;
+    }
+}
+
+@media (min-width: 844px){
+    .mySwiper{
+        margin-left: 10rem!important;
+        margin-top: 5rem; 
+        width: 22rem;      
+    }
+}
+
+@media (min-width: 915px){
+    
+}
+
+@media (min-width: 1024px){
+    .mySwiper{
+        margin-top: 38rem;
+        margin-left: -22rem!important;
+        width: 44rem;
+
+    }
+}
+
+@media (min-width: 1440px){
+    .mySwiper{
+        margin-top: 25rem;
+        margin-left: -26rem!important;
+        width: 44rem;
+
+    }
+}

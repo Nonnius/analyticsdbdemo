@@ -1,0 +1,22 @@
+.table2{
+    color: white;
+    font-size: 10px;
+    margin-left: 1.5rem;  
+    height: 18rem!important;
+    margin-top: 1rem;
+    font-family: Poppins!important; 
+    overflow-y: scroll!important;   
+}
+
+.table2 td, .table2 th {
+  border: 1px solid ;
+  padding: 5px;
+  background: rgba(235, 7, 235, 0.24);
+  font-family: Poppins;
+}
+
+@media (min-width: 768px){
+    .table2 th{
+        margin-left: -2rem!important;
+    }
+}
