@@ -1,5 +1,5 @@
 import React from 'react'
-import newLogo from '../assets/newlogo.png'
+import newLogo from '../assets/newLogo.png'
 import { BiMessageAltDots } from "react-icons/bi";
 import { MdNotifications } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
