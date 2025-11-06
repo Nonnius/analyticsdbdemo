@@ -1,5 +1,25 @@
 # React + Vite
 
+## Deploying to Netlify
+
+1. Push your code to GitHub (or your preferred git host).
+2. Go to [Netlify](https://app.netlify.com/) and create a new site from your repo.
+3. Set build command to `npm run build` and publish directory to `dist`.
+4. Netlify will auto-detect the `netlify.toml` config and handle SPA routing.
+
+### Local build/test
+```sh
+npm install
+npm run build
+```
+
+### Netlify CLI (optional)
+Install Netlify CLI for local testing:
+```sh
+npm install -g netlify-cli
+netlify dev
+```
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

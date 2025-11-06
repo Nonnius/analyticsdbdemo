@@ -1,81 +1,72 @@
-import React from 'react'
-import { useMemo } from 'react'
-import {useTable} from 'react-table'
-import AssetsDataSheet from './AssetsDataSheet.json'
-import './assetsTable.css'
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/jsx-props-no-spreading */
-
+import React, { useMemo } from 'react';
+import {
+  useReactTable,
+  getCoreRowModel,
+  flexRender,
+} from '@tanstack/react-table';
+import AssetsDataSheet from './AssetsDataSheet.json';
+import './assetsTable.css';
 
 const AssetsTable = () => {
-  
-     const data = useMemo(() => AssetsDataSheet, []);
-     const columns = useMemo(() => [
-    { Header: "Id", accessor: "id" },
-    { Header: "Current Assets", accessor: "detail1" },
-    { Header: "Yr 2021", accessor: "value1" },
-    { Header: "Yr 2020", accessor: "value2" },
+  const data = useMemo(() => AssetsDataSheet, []);
+
+  const columns = useMemo(() => [
+    {
+      accessorKey: 'id',
+      header: 'Id',
+    },
+    {
+      accessorKey: 'detail1',
+      header: 'Current Assets',
+    },
+    {
+      accessorKey: 'value1',
+      header: 'Yr 2021',
+    },
+    {
+      accessorKey: 'value2',
+      header: 'Yr 2020',
+    },
   ], []);
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow
-  } = useTable({ columns, data });
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  });
 
   return (
-    
     <div className="table w-65 overflow-y-scroll xl:w-88">
       <div className="container">
-        <table {...getTableProps()}>
+        <table>
           <thead>
-            {headerGroups.map((headerGroup, i) => {
-              const fullGroupProps = headerGroup.getHeaderGroupProps();
-              const { key: groupKey, ...groupProps } = fullGroupProps;
-              return (
-                <tr key={groupKey ?? `header-group-${i}`} {...groupProps}>
-                  {headerGroup.headers.map((column, j) => {
-                    const fullColProps = column.getHeaderProps();
-                    const { key: colKey, ...colProps } = fullColProps;
-                    return (
-                       <th key={colKey ?? `column-${j}`} {...colProps}>
-                        {column.render("Header")}
-                      </th>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-                    {rows.map((row, i) => {
-            prepareRow(row);
-            const props = row.getRowProps();
-            const { key, ...rest } = props;
-
-            return (
-              <tr key={key ?? `row-${i}`} {...rest}>
-                {row.cells.map((cell, j) => {
-                  const cellProps = cell.getCellProps();
-                  const { key: cellKey, ...cellRest } = cellProps;
-
-                  return (
-                    <td key={cellKey ?? `cell-${i}-${j}`} {...cellRest}>
-                      {cell.render("Cell")}
-                    </td>
-                  );
-                })}
+            {table.getHeaderGroups().map((headerGroup, i) => (
+              <tr key={headerGroup.id ?? `header-group-${i}`}>
+                {headerGroup.headers.map((header, j) => (
+                  <th key={header.id ?? `column-${j}`}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(header.column.columnDef.header, header.getContext())}
+                  </th>
+                ))}
               </tr>
-
-              );
-            })}
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map((row, i) => (
+              <tr key={row.id ?? `row-${i}`}>
+                {row.getVisibleCells().map((cell, j) => (
+                  <td key={cell.id ?? `cell-${i}-${j}`}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AssetsTable
+export default AssetsTable;
