@@ -23,7 +23,7 @@ const AssetsSwiper = () => {
           enabled: true,
         }}
         breakpoints={{
-          390: {slidesPerView: 1, spaceBetween: 2},
+          384: {slidesPerView: 1, spaceBetween: 2},
           560: {slidesPerView: 1},
           712: {slidesPerView: 1},
           768: {slidesPerView: 1},
